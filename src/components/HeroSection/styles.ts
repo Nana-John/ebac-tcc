@@ -10,7 +10,6 @@ export const HeroContainer = styled.section`
   padding: 0 20px;
   font-family: 'Playfair Display', serif;
 `
-
 export const HeroContent = styled.div`
   display: flex;
   justify-content: space-between;
@@ -45,7 +44,7 @@ export const HeroImage = styled.img.attrs(
   width: 90%; /* Tamanho da imagem um pouco menor */
   max-width: 100%;
   height: auto;
-  max-height: 1600px; /* Ajuste de altura máxima */
+  max-height: 2500px; /* Ajuste de altura máxima */
   border-radius: 12px;
   object-fit: contain;
 `

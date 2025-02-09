@@ -19,23 +19,14 @@ const Header = () => {
       <Logo>
         <img src={logo} alt="Logo do Restaurante" />
       </Logo>
+
       <NavMenu>
-        <NavItem as="a" href="#">
-          Home
-        </NavItem>
-        <NavItem as="a" href="#">
-          Cardápio
-        </NavItem>
-        <NavItem as="a" href="#">
-          Reservas
-        </NavItem>
-        <NavItem as="a" href="#">
-          Sobre
-        </NavItem>
-        <NavItem as="a" href="#">
-          Contato
-        </NavItem>
+        <NavItem href="#home">Home</NavItem>
+        <NavItem href="#cardapio">Cardápio</NavItem>
+        <NavItem href="#sobre">Sobre</NavItem>
+        <NavItem href="#contato">Contato</NavItem>
       </NavMenu>
+
       <Actions>
         <OrderButton>Fazer Pedido</OrderButton>
         <CartIcon>

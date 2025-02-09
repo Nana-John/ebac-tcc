@@ -31,8 +31,9 @@ export const Text = styled.p`
   font-size: 18px;
   color: #555;
   line-height: 1.6;
-  text-align: left;
+  text-align: justify;
   margin-bottom: 20px;
+  position: relative;
 
   strong {
     font-weight: bold;

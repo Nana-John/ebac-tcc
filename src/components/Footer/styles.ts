@@ -1,130 +1,102 @@
 import styled from 'styled-components'
 
-export const Container = styled.footer`
-  background-color: #f8f8f8;
-  padding: 40px 20px;
+export const FooterContainer = styled.footer`
+  background-color: #333;
+  color: #fff;
+  padding: 2rem;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
-  gap: 40px; /* Espaço entre as colunas */
+  align-items: center;
+  text-align: center;
 `
 
 export const FooterContent = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 60%; /* Ajuste a largura para ficar à esquerda */
+  align-items: center;
+  margin-bottom: 2rem;
 `
 
-export const NavLinks = styled.nav`
+export const NavLinks = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
+  justify-content: center;
+  gap: 20px;
 
   a {
     text-decoration: none;
-    color: #333;
-    font-size: 1rem;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+
     &:hover {
-      color: #007b5f;
+      color: #ff6347;
     }
   }
 `
 
 export const SocialIcons = styled.div`
+  margin: 20px 0;
   display: flex;
-  gap: 20px;
-  margin-bottom: 20px;
+  gap: 15px;
 
   a {
-    color: #333;
-    font-size: 1.5rem;
+    color: #fff;
+    font-size: 24px;
+    transition: color 0.3s;
+
     &:hover {
-      color: #007b5f;
+      color: #ff6347;
     }
   }
 `
 
-export const Legal = styled.div`
+export const ReservationForm = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
+  gap: 15px;
+  width: 100%;
+  max-width: 400px;
+`
+
+export const FormTitle = styled.h3`
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 15px;
+  font-weight: bold;
+`
+
+export const FormInput = styled.input`
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+`
+
+export const FormSelect = styled.select`
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+`
+
+export const LegalInfo = styled.div`
+  margin-top: 20px;
 
   p {
-    font-size: 0.875rem;
-    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
   }
 
   a {
+    color: #fff;
+    font-size: 14px;
+    margin: 0 10px;
     text-decoration: none;
-    color: #007b5f;
-    font-size: 0.875rem;
+    transition: color 0.3s;
+
     &:hover {
-      text-decoration: underline;
+      color: #ff6347;
     }
-  }
-`
-
-// Estilos para o formulário de reserva
-
-export const FormContainer = styled.div`
-  width: 100%;
-  max-width: 400px;
-  background-color: #f4f4f4;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-`
-
-export const Title = styled.h2`
-  font-size: 2rem;
-  margin-bottom: 20px;
-  text-align: center;
-  color: #333;
-`
-
-export const Input = styled.input`
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-  &:focus {
-    border-color: #007b5f;
-    outline: none;
-  }
-`
-
-export const Select = styled.select`
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-  &:focus {
-    border-color: #007b5f;
-    outline: none;
-  }
-`
-
-export const SubmitButton = styled.button`
-  width: 100%;
-  padding: 12px;
-  background-color: #007b5f;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #004d39;
   }
 `

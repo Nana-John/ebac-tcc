@@ -51,23 +51,27 @@ const MenuContainer = styled.section`
 
 const SectionTitle = styled.h2`
   color: white;
-  font-size: 32px;
-  margin-bottom: 10px;
+  font-size: 40px;
+  margin: 5px;
+  font-family: 'Playfair Display', serif;
 `
 
 const Description = styled.p`
   color: white;
   font-size: 18px;
+  font-family: 'Roboto', sans-serif;
   margin-bottom: 20px;
 `
 
 const MenuWrapper = styled.div`
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   max-width: 500px;
   height: 300px;
+  margin: 80px;
 `
 
 const MenuItem = styled(motion.div)`
@@ -87,10 +91,16 @@ const MenuItem = styled(motion.div)`
     transform: scale(1.2);
   }
 
-  &.prev img,
-  &.next img {
-    transform: scale(0.8);
-    opacity: 0.8;
+  &.prev {
+    transform: scale(0.7);
+    left: 400px;
+    z-index: 1;
+  }
+
+  &.next {
+    transform: scale(0.7);
+    right: 400px;
+    z-index: 2;
   }
 `
 
@@ -108,7 +118,7 @@ const AddButton = styled.button`
   background-color: #ff5733;
   color: white;
   border: none;
-  padding: 10px 200px;
+  padding: 10px 20px;
   font-size: 16px;
   margin-top: 10px;
   cursor: pointer;
@@ -128,50 +138,52 @@ const MenuSection: React.FC = () => {
     setIndex((prev) => (prev - 1 + dishes.length) % dishes.length)
 
   return (
-    <MenuContainer>
-      <SectionTitle>Escolha sua Pizza</SectionTitle>
-      <Description>
-        Explore nosso cardápio e selecione sua pizza favorita para adicionar ao
-        pedido.
-      </Description>
-      <MenuWrapper>
-        <NavButton as="button" onClick={prevDish}>
-          ◀
-        </NavButton>
+    <section id="cardapio">
+      <MenuContainer>
+        <SectionTitle>Escolha sua Pizza</SectionTitle>
+        <Description>
+          Explore nosso cardápio e selecione sua pizza favorita para adicionar
+          ao pedido.
+        </Description>
+        <MenuWrapper>
+          <NavButton as="button" onClick={prevDish}>
+            ◀
+          </NavButton>
 
-        <AnimatePresence mode="wait">
-          <MenuItem
-            key={dishes[index].id}
-            initial={{ x: 100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -100, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="active"
-          >
-            <img src={dishes[index].image} alt={dishes[index].name} />
-            <h3>{dishes[index].name}</h3>
-            <AddButton>Adicionar ao Pedido</AddButton>
+          <AnimatePresence mode="wait">
+            <MenuItem
+              key={dishes[index].id}
+              initial={{ scale: 0.9, opacity: 0.5, x: 100 }}
+              animate={{ scale: 1, opacity: 1, x: 0 }}
+              exit={{ scale: 0.9, opacity: 0.5, x: -100 }}
+              transition={{ duration: 0.2 }}
+              className="active"
+            >
+              <img src={dishes[index].image} alt={dishes[index].name} />
+              <h3>{dishes[index].name}</h3>
+              <AddButton>Adicionar ao Pedido</AddButton>
+            </MenuItem>
+          </AnimatePresence>
+
+          <MenuItem className="prev">
+            <img
+              src={dishes[(index - 1 + dishes.length) % dishes.length].image}
+              alt={dishes[(index - 1 + dishes.length) % dishes.length].name}
+            />
           </MenuItem>
-        </AnimatePresence>
+          <MenuItem className="next">
+            <img
+              src={dishes[(index + 1) % dishes.length].image}
+              alt={dishes[(index + 1) % dishes.length].name}
+            />
+          </MenuItem>
 
-        <MenuItem className="prev">
-          <img
-            src={dishes[(index - 1 + dishes.length) % dishes.length].image}
-            alt={dishes[(index - 1 + dishes.length) % dishes.length].name}
-          />
-        </MenuItem>
-        <MenuItem className="next">
-          <img
-            src={dishes[(index + 1) % dishes.length].image}
-            alt={dishes[(index + 1) % dishes.length].name}
-          />
-        </MenuItem>
-
-        <NavButton as="button" onClick={nextDish}>
-          ▶
-        </NavButton>
-      </MenuWrapper>
-    </MenuContainer>
+          <NavButton as="button" onClick={nextDish}>
+            ▶
+          </NavButton>
+        </MenuWrapper>
+      </MenuContainer>
+    </section>
   )
 }
 

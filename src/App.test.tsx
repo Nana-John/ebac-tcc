@@ -1,20 +1,33 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { Provider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import App from './App'
-import { store } from './store'
 
-test('renders the App component', () => {
+test('renders all main components', () => {
   render(
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
+    <Router>
+      <App />
+    </Router>
   )
 
-  // Verifica se o texto "Home" está presente (ou qualquer outro texto da página inicial)
-  const homeElement = screen.getByText(/home/i)
-  expect(homeElement).toBeInTheDocument()
+  // Verifica se o Header está renderizando
+  expect(screen.getByRole('banner')).toBeInTheDocument()
+
+  // Verifica se o HeroSection está renderizando
+  expect(screen.getByText(/bem-vindo/i)).toBeInTheDocument()
+
+  // Verifica se o MenuSection está renderizando
+  expect(screen.getByText(/nosso cardápio/i)).toBeInTheDocument()
+
+  // Verifica se o SobreNos está renderizando
+  expect(screen.getByText(/sobre nós/i)).toBeInTheDocument()
+
+  // Verifica se os Destaques estão renderizando
+  expect(screen.getByText(/destaques/i)).toBeInTheDocument()
+
+  // Verifica se o LocalizacaoContato está renderizando
+  expect(screen.getByText(/entre em contato/i)).toBeInTheDocument()
+
+  // Verifica se o Footer está renderizando
+  expect(screen.getByRole('contentinfo')).toBeInTheDocument()
 })
