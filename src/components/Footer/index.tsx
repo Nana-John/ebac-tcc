@@ -52,11 +52,11 @@ const Footer = () => {
         <FooterContent>
           {/* Links de Navegação */}
           <NavLinks>
-            <a href="/">Home</a>
-            <a href="/cardapio">Cardápio</a>
-            <a href="/reservas">Reservas</a>
-            <a href="/sobre">Sobre Nós</a>
-            <a href="/contato">Contato</a>
+            <a href="#home">Home</a>
+            <a href="#cardapio">Cardápio</a>
+            <a href="#footer">Reservas</a>
+            <a href="#sobre">Sobre Nós</a>
+            <a href="#contato">Contato</a>
           </NavLinks>
 
           {/* Redes Sociais com Hover */}
