@@ -6,11 +6,11 @@ import bgHeader from '../../assets/images/bg-header.png'
 const dishes = [
   { id: 1, name: 'Dom Giovanni', image: '/images/Dom Giovanni.png' },
   { id: 2, name: 'Margherita', image: '/images/Marguerita.png' },
-  { id: 3, name: 'Mozarela', image: '/images/Mussarela.png' },
+  { id: 3, name: 'Mozzarella', image: '/images/Mussarela.png' },
   { id: 4, name: 'Champignon', image: '/images/champion.png' },
   {
     id: 5,
-    name: 'Tomate com Rúcula',
+    name: 'Pomodori Secchi Con Rucola',
     image: '/images/Tomate Seco com rúcula.png'
   },
   { id: 6, name: 'Abacaxi', image: '/images/abacaxi.png' }
