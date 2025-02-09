@@ -1,77 +1,45 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import styled from 'styled-components'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { MenuContainer, MenuItem, NavButtons } from './styles'
 
-const foodItems = [
-  { id: 1, name: '🍕 Pizza' },
-  { id: 2, name: '🍔 Hambúrguer' },
-  { id: 3, name: '🍣 Sushi' },
-  { id: 4, name: '🥗 Salada' },
-  { id: 5, name: '🍩 Donut' },
-  { id: 6, name: '🍉 Melancia' }
+const dishes = [
+  { id: 1, name: 'Spaghetti Carbonara', image: '/images/carbonara.jpg' },
+  { id: 2, name: 'Margherita Pizza', image: '/images/pizza.jpg' },
+  { id: 3, name: 'Tiramisu', image: '/images/tiramisu.jpg' }
 ]
 
-const OvalMenuContainer = styled.div`
-  width: 400px;
-  height: 200px;
-  position: relative;
-  overflow: hidden;
-`
+const MenuSection: React.FC = () => {
+  const [index, setIndex] = useState(0)
+  const direction = 1
 
-const OvalPath = styled(motion.div)`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
-const FoodItem = styled(motion.div)`
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  background: white;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-`
-
-const OvalMenu = () => {
-  const radiusX = 150
-  const radiusY = 60
-  const duration = 6
+  const nextDish = () => setIndex((prev) => (prev + 1) % dishes.length)
+  const prevDish = () =>
+    setIndex((prev) => (prev - 1 + dishes.length) % dishes.length)
 
   return (
-    <OvalMenuContainer>
-      <OvalPath
-        animate={{
-          rotate: [0, 60]
-        }}
-        transition={{ repeat: Infinity, duration, ease: 'linear' }}
-      >
-        {foodItems.map((item, index) => {
-          const angle = (index / foodItems.length) * Math.PI * 2
-          const x = Math.cos(angle) * radiusX
-          const y = Math.sin(angle) * radiusY
-
-          return (
-            <FoodItem
-              key={item.id}
-              style={{
-                transform: `translate(${x}px, ${y}px)`
-              }}
-            >
-              {item.name}
-            </FoodItem>
-          )
-        })}
-      </OvalPath>
-    </OvalMenuContainer>
+    <MenuContainer>
+      <NavButtons as="button" onClick={prevDish}>
+        ◀
+      </NavButtons>
+      <AnimatePresence mode="wait" custom={direction}>
+        <motion.div
+          key={dishes[index].id}
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: -100, opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <MenuItem>
+            <img src={dishes[index].image} alt={dishes[index].name} />
+            <h3>{dishes[index].name}</h3>
+          </MenuItem>
+        </motion.div>
+      </AnimatePresence>
+      <NavButtons as="button" onClick={nextDish}>
+        ▶
+      </NavButtons>
+    </MenuContainer>
   )
 }
 
-export default OvalMenu
+export default MenuSection
