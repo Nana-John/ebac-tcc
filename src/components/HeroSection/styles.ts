@@ -32,16 +32,50 @@ export const ImageSection = styled.div`
   display: grid;
   justify-content: center;
   align-items: center;
-  max-width: 800px; /* Garante que a imagem não ultrapasse um limite definido */
+  max-width: 800px;
+  position: relative; /* Necessário para posicionar a fumaça */
 `
 
-export const HeroImage = styled.img`
-  width: 100%;
+export const HeroImage = styled.img.attrs(
+  (props: { src: string; alt: string }) => ({
+    src: props.src,
+    alt: props.alt
+  })
+)`
+  width: 90%; /* Tamanho da imagem um pouco menor */
   max-width: 100%;
   height: auto;
-  max-height: 200px; /* Ajuste de altura máxima */
+  max-height: 1600px; /* Ajuste de altura máxima */
   border-radius: 12px;
-  object-fit: contain; /* Mantém a proporção sem cortar */
+  object-fit: contain;
+`
+
+export const SmokeEffect = styled.div`
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  opacity: 0;
+  animation: smokeAnimation 5s infinite ease-in-out;
+
+  @keyframes smokeAnimation {
+    0% {
+      transform: translateX(-50%) translateY(0) scale(1);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateX(-50%) translateY(-100px) scale(1.3);
+      opacity: 0.2;
+    }
+    100% {
+      transform: translateX(-50%) translateY(-200px) scale(1.6);
+      opacity: 0;
+    }
+  }
 `
 
 export const Headline = styled.h1`

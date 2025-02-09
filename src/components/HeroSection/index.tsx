@@ -4,9 +4,12 @@ import {
   TextSection,
   ImageSection,
   Headline,
-  CTAButton
+  CTAButton,
+  HeroImage,
+  SmokeEffect
 } from './styles'
 import heroImage from '../../assets/images/pratos/pizzaHero.png'
+
 const Hero = () => {
   return (
     <HeroContainer>
@@ -18,7 +21,8 @@ const Hero = () => {
           <CTAButton>Ver Menu</CTAButton>
         </TextSection>
         <ImageSection>
-          <img src={heroImage} alt="Culinária Italiana" />
+          <HeroImage src={heroImage} alt="Culinária Italiana" />
+          <SmokeEffect />
         </ImageSection>
       </HeroContent>
     </HeroContainer>

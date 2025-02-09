@@ -1,81 +1,57 @@
 import styled from 'styled-components'
 
 export const SobreContainer = styled.section`
-  padding: 60px 20px;
-  background-color: #f8f8f8;
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px;
+  gap: 50px; /* Distância entre texto e imagem */
+  max-width: 1200px;
+  height: 350px;
+  margin: 0 auto;
+  background-color: #f4f4f4; /* Cor de fundo para dar um contraste */
 `
 
-export const Titulo = styled.h2`
+export const Titulo = styled.h1`
+  color: #333;
   font-size: 36px;
-  margin-bottom: 20px;
-  color: #d62828;
+  text-align: center;
+  margin-bottom: 30px;
 `
 
 export const Historia = styled.div`
-  max-width: 800px;
-  margin: 0 auto 40px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
+
+export const Text = styled.p`
   font-size: 18px;
+  color: #555;
   line-height: 1.6;
-  color: #333;
+  text-align: left;
+  margin-bottom: 20px;
+
+  strong {
+    font-weight: bold;
+    color: #222;
+  }
 `
 
 export const Galeria = styled.div`
+  flex-shrink: 0;
+  width: 40%;
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin-bottom: 40px;
+  align-items: center;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-  }
-`
-export const Foto = styled.img`
-  width: 250px;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-`
-export const Text = styled.p`
-  font-size: 18px;
-  line-height: 1.6;
-  color: #555;
-  margin: 20px 0;
-  text-align: justify;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-`
-
-export const Diferenciais = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: left;
-
-  h3 {
-    font-size: 24px;
-    color: #d62828;
-    margin-bottom: 10px;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-
-    li {
-      font-size: 18px;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      color: #555;
-    }
+  img {
+    width: 100%;
+    max-width: 500px; /* Limita o tamanho máximo da imagem */
+    height: auto;
+    border-radius: 8px; /* Arredonda as bordas da imagem */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar destaque */
   }
 `

@@ -1,53 +1,40 @@
 import React from 'react'
 import * as S from './styles'
 
-const pratosEspeciais = [
-  {
-    id: 1,
-    nome: 'Spaghetti Carbonara',
-    preco: 'R$ 45,00',
-    imagem: '/images/carbonara.jpg'
-  },
-  {
-    id: 2,
-    nome: 'Pizza Margherita',
-    preco: 'R$ 50,00',
-    imagem: '/images/margherita.jpg'
-  }
-]
-
-const depoimentos = [
-  {
-    id: 1,
-    nome: 'João Silva',
-    comentario: 'Melhor restaurante italiano da cidade!',
-    nota: '5/5'
-  }
-]
-
 const Destaques: React.FC = () => {
-  return (
-    <div>
-      <S.PratosGrid>
-        {pratosEspeciais.map((prato) => (
-          <S.PratoCard key={prato.id}>
-            <img src={prato.imagem} alt={prato.nome} />
-            <h3>{prato.nome}</h3>
-            <p>{prato.preco}</p>
-          </S.PratoCard>
-        ))}
-      </S.PratosGrid>
+  const destaques = [
+    {
+      src: '/images/fresco.png',
+      title: 'Ingredientes Frescos',
+      text: '100% frescos e orgânicos, direto da fazenda para sua mesa.'
+    },
+    {
+      src: '/images/vinho.png',
+      title: 'Vinhos Importados',
+      text: 'Vinhos selecionados diretamente da Itália, para harmonizar com seu prato.'
+    },
+    {
+      src: '/images/premios.png',
+      title: 'Excelência Gastronômica',
+      text: 'Reconhecidos com prêmios de excelência em culinária italiana.'
+    }
+  ]
 
-      <S.Depoimentos>
-        {depoimentos.map((dep) => (
-          <S.DepoimentoItem as="div" key={dep.id}>
-            <strong>{dep.nota}</strong>
-            <p>&quot;{dep.comentario}&quot;</p>
-            <span>- {dep.nome}</span>
-          </S.DepoimentoItem>
+  return (
+    <S.DestaquesSection>
+      <S.DestaquesTitle>Confira nossos destaques</S.DestaquesTitle>
+      <S.DestaquesGrid>
+        {destaques.map((destaque, index) => (
+          <S.DestaqueCard as="a" key={index}>
+            <S.DestaqueIcon>
+              <img src={destaque.src} alt={destaque.title} />
+            </S.DestaqueIcon>
+            <S.DestaqueTitle>{destaque.title}</S.DestaqueTitle>
+            <S.DestaqueText>{destaque.text}</S.DestaqueText>
+          </S.DestaqueCard>
         ))}
-      </S.Depoimentos>
-    </div>
+      </S.DestaquesGrid>
+    </S.DestaquesSection>
   )
 }
 

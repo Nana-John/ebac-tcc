@@ -2,60 +2,94 @@ import styled from 'styled-components'
 
 export const Container = styled.section`
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
   padding: 60px 20px;
-  background-color: #f8f8f8;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 
 export const Mapa = styled.div`
-  width: 100%;
-  max-width: 800px;
-  height: 300px;
+  width: 60%;
+  height: 400px;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 300px;
+  }
 `
 
 export const Informacoes = styled.div`
-  margin-top: 30px;
-  text-align: left;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  color: #333;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `
 
-export const ContatoItem = styled.p`
-  font-size: 18px;
-  color: #333;
-  margin: 8px 0;
-  display: left;
+export const ContatoItem = styled.div`
+  display: flex;
   align-items: center;
-  gap: 10px;
+  font-size: 18px;
+  color: #555;
 
   svg {
-    color: #d62828;
+    margin-right: 12px;
     font-size: 20px;
+    color: #007bff;
+  }
+
+  strong {
+    font-weight: bold;
+    color: #222;
   }
 `
 
 export const WhatsAppButton = styled.a`
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   background-color: #25d366;
-  color: #fff;
+  color: white;
   font-size: 18px;
-  font-weight: bold;
-  padding: 12px 20px;
-  border-radius: 8px;
+  padding: 12px 24px;
+  border-radius: 30px;
   text-decoration: none;
+  width: fit-content;
+  max-width: 250px;
   margin-top: 20px;
-  transition: 0.3s;
-  gap: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s;
 
   svg {
-    font-size: 22px;
+    margin-right: 8px;
   }
 
   &:hover {
-    background-color: #1ebd5e;
+    background-color: #128c7e;
+    transform: translateY(-4px);
   }
 `
