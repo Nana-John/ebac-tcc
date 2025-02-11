@@ -7,12 +7,16 @@ import {
   NavItem,
   Actions,
   OrderButton,
-  CartIcon
+  CartIcon,
+  HamburgerMenu
 } from './styles'
 import logo from '../../assets/images/logo3.png'
 
 const Header = () => {
   const [cartCount] = useState(2) // Simulando itens no carrinho
+  const [open, setOpen] = useState(false) // Controla o estado do menu
+
+  const toggleMenu = () => setOpen(!open) // Alterna a visibilidade do menu
 
   return (
     <HeaderContainer>
@@ -20,7 +24,13 @@ const Header = () => {
         <img src={logo} alt="Logo do Restaurante" />
       </Logo>
 
-      <NavMenu>
+      <HamburgerMenu as="div" open={open} onClick={toggleMenu}>
+        <div />
+        <div />
+        <div />
+      </HamburgerMenu>
+
+      <NavMenu as="nav" open={open}>
         <NavItem href="#home">Home</NavItem>
         <NavItem href="#cardapio">Cardápio</NavItem>
         <NavItem href="#sobre">Sobre</NavItem>

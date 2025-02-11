@@ -6,11 +6,18 @@ export const SobreContainer = styled.section`
   justify-content: space-between;
   align-items: center;
   padding: 50px;
-  gap: 50px; /* Distância entre texto e imagem */
+  gap: 50px;
   max-width: 1200px;
   height: 350px;
   margin: 0 auto;
-  background-color: #f4f4f4; /* Cor de fundo para dar um contraste */
+  background-color: #f4f4f4;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 30px;
+    height: auto; /* Ajusta a altura para telas menores */
+    gap: 30px;
+  }
 `
 
 export const Titulo = styled.h1`
@@ -18,6 +25,11 @@ export const Titulo = styled.h1`
   font-size: 36px;
   text-align: center;
   margin-bottom: 30px;
+
+  @media (max-width: 768px) {
+    font-size: 28px; /* Reduz o tamanho do título em telas menores */
+    margin-bottom: 20px;
+  }
 `
 
 export const Historia = styled.div`
@@ -25,6 +37,10 @@ export const Historia = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `
 
 export const Text = styled.p`
@@ -39,6 +55,11 @@ export const Text = styled.p`
     font-weight: bold;
     color: #222;
   }
+
+  @media (max-width: 768px) {
+    font-size: 16px; /* Ajuste de fonte para telas menores */
+    text-align: center; /* Centraliza o texto em telas menores */
+  }
 `
 
 export const Galeria = styled.div`
@@ -50,9 +71,16 @@ export const Galeria = styled.div`
 
   img {
     width: 100%;
-    max-width: 500px; /* Limita o tamanho máximo da imagem */
+    max-width: 500px;
     height: auto;
-    border-radius: 8px; /* Arredonda as bordas da imagem */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar destaque */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    img {
+      max-width: 100%; /* Ajusta a imagem para ocupar toda a largura disponível */
+    }
   }
 `

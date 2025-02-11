@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 interface NavItemProps {
   href: string
@@ -17,9 +17,9 @@ export const HeaderContainer = styled.header`
   z-index: 1000;
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 15px;
     padding: 15px;
+    flex-direction: column;
+    align-items: flex-start;
   }
 `
 
@@ -31,18 +31,27 @@ export const Logo = styled.div`
 
   @media (max-width: 768px) {
     order: 1; /* Logo no topo em telas menores */
+    margin-bottom: 15px;
   }
 `
 
-export const NavMenu = styled.nav`
+export const NavMenu = styled.nav<{ open: boolean }>`
   display: flex;
   gap: 20px;
 
   @media (max-width: 768px) {
-    order: 3; /* Menu na parte inferior em telas menores */
-    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
     justify-content: center;
-    gap: 10px;
+    background-color: #fff;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    display: ${({ open }) => (open ? 'flex' : 'none')};
+    transition: all 0.3s ease-in-out;
+    z-index: 999;
   }
 `
 
@@ -58,7 +67,9 @@ export const NavItem = styled.a<NavItemProps>`
   }
 
   @media (max-width: 768px) {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
+    padding: 10px 0;
+    text-align: center;
   }
 `
 
@@ -68,10 +79,12 @@ export const Actions = styled.div`
   gap: 20px;
 
   @media (max-width: 768px) {
-    order: 2; /* Ações no meio em telas menores */
+    order: 2;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 10px;
   }
 `
-
 export const OrderButton = styled.button`
   background-color: #007b5f;
   color: white;
@@ -91,7 +104,6 @@ export const OrderButton = styled.button`
     font-size: 0.9rem;
   }
 `
-
 export const CartIcon = styled.div`
   position: relative;
   cursor: pointer;
@@ -114,5 +126,45 @@ export const CartIcon = styled.div`
     font-size: 0.75rem;
     padding: 4px 8px;
     border-radius: 50%;
+  }
+`
+
+// Botão de menu hambúrguer
+export const HamburgerMenu = styled.div<{ open: boolean }>`
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 25px;
+  width: 30px;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+
+  div {
+    width: 100%;
+    height: 4px;
+    background-color: #333;
+    transition: 0.3s;
+
+    ${({ open }) =>
+      open &&
+      css`
+        &:nth-child(1) {
+          transform: rotate(45deg);
+          position: relative;
+          top: 6px;
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          transform: rotate(-45deg);
+          position: relative;
+          top: -6px;
+        }
+      `}
   }
 `
