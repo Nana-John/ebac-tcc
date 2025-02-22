@@ -8,7 +8,16 @@ const Checkout: React.FC = () => {
   const { items, totalPrice } = useCartTotal()
   const dispatch = useTypedDispatch()
 
-  const handleCheckout = (values: any) => {
+  interface CheckoutData {
+    nome: string
+    email: string
+    telefone: string // <-- Alterado para string
+    endereco: string
+    cidade: string
+    cep: string
+  }
+
+  const handleCheckout = (values: CheckoutData) => {
     if (items.length === 0) {
       toast.warn('Seu carrinho está vazio!')
       return
