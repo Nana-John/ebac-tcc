@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import {useGetRestaurantByIdQuery } from '../../services/api'
+import { useGetRestaurantByIdQuery } from '../../services/api'
 
 import Banner from '../../components/Banner'
 import Footer from '../../components/Footer'
@@ -16,7 +16,6 @@ const Products = () => {
   if (isLoading) {
     return <h4>carregando...</h4>
   }
-
 
   if (!menu) {
     return <h4>Menu não encontrado</h4>
