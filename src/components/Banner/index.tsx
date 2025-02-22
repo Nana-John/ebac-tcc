@@ -1,5 +1,23 @@
 import { BannerContainer, Content } from './styles'
 
+// Definindo os tipos para FoodInfos
+interface CardapioItem {
+  nome: string
+  foto: string
+  porcao: string
+}
+
+interface FoodInfos {
+  id: string
+  titulo: string
+  destacado: boolean
+  cardapio: CardapioItem[]
+  capa: string
+  tipo: string
+  avaliacao: number
+  descricao: string
+}
+
 type Props = {
   bannerFood: FoodInfos
 }

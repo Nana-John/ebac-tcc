@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 // Lazy loading das páginas
 const Home = lazy(() => import('./pages/Home'))
-const Products = lazy(() => import('./pages/Products'))
+const Products = lazy(() => import('./pages/Products/index'))
 const Checkout = lazy(() => import('./pages/Checkout/Checkout'))
 const DeliveryPage = lazy(() => import('./pages/Delivery/DeliveryPage'))
 const OrderConfirmation = lazy(
