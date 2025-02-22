@@ -11,7 +11,9 @@ const Home = lazy(() => import('./pages/Home'))
 const Products = lazy(() => import('./pages/Products'))
 const Checkout = lazy(() => import('./pages/Checkout/Checkout'))
 const DeliveryPage = lazy(() => import('./pages/Delivery/DeliveryPage'))
-const OrderConfirmation = lazy(() => import('./pages/Delivery/OrderConfirmation'))
+const OrderConfirmation = lazy(
+  () => import('./pages/Delivery/OrderConfirmation')
+)
 
 const Rotas = () => (
   <Suspense fallback={<div>Carregando...</div>}>

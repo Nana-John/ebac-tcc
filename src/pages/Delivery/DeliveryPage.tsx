@@ -2,36 +2,36 @@ import React, { useState } from 'react'
 
 // Definindo os tipos para os dados de resposta da API
 interface Address {
-  description: string;
-  city: string;
-  zipCode: string;
-  number: string;
-  complement: string;
+  description: string
+  city: string
+  zipCode: string
+  number: string
+  complement: string
 }
 
 interface Card {
-  name: string;
-  number: string;
-  code: number;
+  name: string
+  number: string
+  code: number
   expires: {
-    month: number;
-    year: number;
-  };
+    month: number
+    year: number
+  }
 }
 
 interface Payment {
-  card: Card;
+  card: Card
 }
 
 interface Delivery {
-  receiver: string;
-  address: Address;
+  receiver: string
+  address: Address
 }
 
 interface OrderConfirmationData {
-  products: Array<{ id: number; price: number }>;
-  delivery: Delivery;
-  payment: Payment;
+  products: Array<{ id: number; price: number }>
+  delivery: Delivery
+  payment: Payment
 }
 
 const DeliveryPage: React.FC = () => {
@@ -42,7 +42,7 @@ const DeliveryPage: React.FC = () => {
       city: '',
       zipCode: '',
       number: '',
-      complement: '',
+      complement: ''
     },
     payment: {
       card: {
@@ -51,50 +51,54 @@ const DeliveryPage: React.FC = () => {
         code: 123,
         expires: {
           month: 12,
-          year: 1234,
-        },
-      },
-    },
-  });
+          year: 1234
+        }
+      }
+    }
+  })
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   // Definindo o tipo de `confirmationData` como `OrderConfirmationData | null`
-  const [confirmationData, setConfirmationData] = useState<OrderConfirmationData | null>(null);
+  const [confirmationData, setConfirmationData] =
+    useState<OrderConfirmationData | null>(null)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
-    }));
-  };
+      [name]: value
+    }))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+    e.preventDefault()
+    setIsSubmitting(true)
 
     try {
-      const response = await fetch('https://fake-api-tau.vercel.app/api/efood/checkout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        'https://fake-api-tau.vercel.app/api/efood/checkout',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        }
+      )
 
       if (!response.ok) {
-        throw new Error('Falha ao enviar os dados para a API');
+        throw new Error('Falha ao enviar os dados para a API')
       }
 
-      const data: OrderConfirmationData = await response.json();
-      setConfirmationData(data); // Aqui você pode passar os dados para a tela de confirmação
+      const data: OrderConfirmationData = await response.json()
+      setConfirmationData(data) // Aqui você pode passar os dados para a tela de confirmação
     } catch (error) {
-      console.error('Erro:', error);
+      console.error('Erro:', error)
     } finally {
-      setIsSubmitting(false);
+      setIsSubmitting(false)
     }
-  };
+  }
 
   return (
     <div>
@@ -194,7 +198,7 @@ const DeliveryPage: React.FC = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
 export default DeliveryPage

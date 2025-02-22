@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom'
+import {useGetRestaurantByIdQuery } from '../../services/api'
 
 import Banner from '../../components/Banner'
 import Footer from '../../components/Footer'
@@ -6,16 +7,19 @@ import HeaderPageProduct from '../../components/HeaderPageProduct'
 
 import FoodCartComponent from '../../components/FoodCartComponent'
 
-import { useGetRestaurantsIdQuery } from '../../services/api'
 import Checkout from '../Checkout/Checkout'
 
 const Products = () => {
-  const { id } = useParams()
+  const { id } = useParams<{ id: string }>()
+  const { data: menu, isLoading } = useGetRestaurantByIdQuery(id!)
 
-  const { data: menu } = useGetRestaurantsIdQuery(id!)
+  if (isLoading) {
+    return <h4>carregando...</h4>
+  }
+
 
   if (!menu) {
-    return <h4>carregando...</h4>
+    return <h4>Menu não encontrado</h4>
   }
 
   return (
