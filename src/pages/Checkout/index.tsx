@@ -33,12 +33,11 @@ const Checkout = () => {
     dispatch(remove(id))
   }
 
-const getTotalPrice = () => {
-  return items.reduce((acumulador: number, valorAtual: CardapioItem) => {
-    return (acumulador += valorAtual.preco)
-  }, 0)
-}
-
+  const getTotalPrice = () => {
+    return items.reduce((acumulador: number, valorAtual: CardapioItem) => {
+      return (acumulador += valorAtual.preco)
+    }, 0)
+  }
 
   const completedPurchase = () => {
     navigate('/')
