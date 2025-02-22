@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Container, Content, LinkLogo, Title, CartButton } from './styles'
 
 import Logo from '../../assets/images/logo.png'
-import { RootReducer } from '../../store'
+import { RootReducer } from '../../store/store'
 import { open } from '../../store/reducers/cart'
 
 const HeaderPageProduct = () => {
